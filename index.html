@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">
 
   <style>
-    /* ===== MC Wiki 风格配色 ===== */
+    /* ===== 浅色主题配色 ===== */
     :root {
       --mc-green: #3c8527;
       --mc-green-dark: #2a5f1b;
@@ -22,12 +22,26 @@
       --mc-text-soft: #54595d;
     }
 
+    /* ===== 深色主题配色 ===== */
+    html[data-theme="dark"] {
+      --mc-green: #4caf50;
+      --mc-green-dark: #66bb6a;
+      --mc-blue: #64b5f6;
+      --mc-border: #3a3f44;
+      --mc-bg: #1a1d21;
+      --mc-bg-soft: #23272b;
+      --mc-bg-card: #2b3035;
+      --mc-text: #e8eaed;
+      --mc-text-soft: #9aa0a6;
+    }
+
     body {
       background: var(--mc-bg);
       color: var(--mc-text);
       font-family: "Linux Libertine", Georgia, "Times New Roman", "Microsoft YaHei", sans-serif;
       font-size: 15px;
       line-height: 1.7;
+      transition: background 0.3s, color 0.3s;
     }
 
     /* ===== 侧边栏 ===== */
@@ -51,7 +65,6 @@
       color: var(--mc-green-dark) !important;
     }
 
-    /* 搜索框 */
     .sidebar .search {
       margin-bottom: 12px;
       border-bottom: 1px solid var(--mc-border);
@@ -59,7 +72,7 @@
     }
 
     .sidebar .search input {
-      background: #fff;
+      background: var(--mc-bg-card);
       border: 1px solid var(--mc-border);
       border-radius: 2px;
       padding: 6px 10px;
@@ -74,7 +87,6 @@
       outline: none;
     }
 
-    /* 侧边栏普通链接 */
     .sidebar-nav a {
       color: var(--mc-text-soft);
       font-size: 14px;
@@ -85,11 +97,10 @@
 
     .sidebar-nav a:hover {
       color: var(--mc-green-dark);
-      background: rgba(60, 133, 39, 0.08);
+      background: rgba(76, 175, 80, 0.12);
       text-decoration: none;
     }
 
-    /* ===== 大章折叠样式 ===== */
     .sidebar-nav > ul > li > p {
       cursor: pointer;
       font-weight: bold;
@@ -115,7 +126,6 @@
       transform: rotate(90deg);
     }
 
-    /* 子项缩进 */
     .sidebar-nav > ul > li > ul {
       padding-left: 12px;
     }
@@ -132,7 +142,7 @@
       font-weight: bold;
     }
 
-    /* ===== 正文区域：白色卡片 ===== */
+    /* ===== 正文区域 ===== */
     .content {
       padding-top: 20px;
     }
@@ -149,7 +159,6 @@
       color: var(--mc-text);
     }
 
-    /* 标题 */
     .markdown-section h1 {
       font-family: "Linux Libertine", Georgia, "Microsoft YaHei", serif;
       font-size: 28px;
@@ -186,7 +195,6 @@
       color: var(--mc-text);
     }
 
-    /* 链接 */
     .markdown-section a {
       color: var(--mc-blue);
       text-decoration: none;
@@ -196,19 +204,18 @@
       text-decoration: underline;
     }
 
-    /* 代码 */
     .markdown-section code {
-      background: #f4f4f4;
-      border: 1px solid #e0e0e0;
+      background: var(--mc-bg-soft);
+      border: 1px solid var(--mc-border);
       border-radius: 2px;
       font-family: Consolas, "Courier New", monospace;
       font-size: 13px;
       padding: 1px 5px;
-      color: #333;
+      color: var(--mc-text);
     }
 
     .markdown-section pre {
-      background: #f8f9fa;
+      background: var(--mc-bg-soft);
       border: 1px solid var(--mc-border);
       border-radius: 2px;
       padding: 12px 16px;
@@ -220,10 +227,9 @@
       border: none;
       padding: 0;
       font-size: 13px;
-      color: #333;
+      color: var(--mc-text);
     }
 
-    /* 表格 */
     .markdown-section table {
       border-collapse: collapse;
       width: 100%;
@@ -232,7 +238,7 @@
     }
 
     .markdown-section table th {
-      background: #eaecf0;
+      background: var(--mc-bg-soft);
       border: 1px solid var(--mc-border);
       padding: 8px 12px;
       text-align: left;
@@ -245,26 +251,23 @@
     }
 
     .markdown-section table tr:nth-child(even) {
-      background: #f8f9fa;
+      background: rgba(128, 128, 128, 0.06);
     }
 
-    /* 引用块 */
     .markdown-section blockquote {
       border-left: 4px solid var(--mc-green);
-      background: rgba(60, 133, 39, 0.06);
+      background: rgba(76, 175, 80, 0.08);
       padding: 10px 16px;
       margin: 12px 0;
       color: var(--mc-text-soft);
     }
 
-    /* 分隔线 */
     .markdown-section hr {
       border: none;
       border-top: 1px solid var(--mc-border);
       margin: 24px 0;
     }
 
-    /* 列表 */
     .markdown-section ul, .markdown-section ol {
       padding-left: 24px;
     }
@@ -273,13 +276,36 @@
       margin: 4px 0;
     }
 
-    /* 返回顶部 */
     body .scrolltop {
       background: var(--mc-green);
       color: #fff;
     }
 
-    /* 移动端 */
+    /* ===== 主题切换按钮 ===== */
+    #theme-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 1000;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--mc-border);
+      background: var(--mc-bg-card);
+      color: var(--mc-text);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    #theme-toggle:hover {
+      transform: scale(1.1);
+    }
+
     @media screen and (max-width: 768px) {
       .markdown-section {
         padding: 16px;
@@ -287,11 +313,52 @@
       }
       .markdown-section h1 { font-size: 24px; }
       .markdown-section h2 { font-size: 20px; }
+      #theme-toggle {
+        top: 10px;
+        right: 10px;
+        width: 36px;
+        height: 36px;
+      }
     }
   </style>
 </head>
 <body>
+  <button id="theme-toggle" title="切换深色/浅色">🌙</button>
   <div id="app"></div>
+
+  <script>
+    // ===== 主题切换 =====
+    (function () {
+      var saved = localStorage.getItem('wiki-theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+
+      function updateButton() {
+        var btn = document.getElementById('theme-toggle');
+        if (!btn) return;
+        btn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        updateButton();
+        document.getElementById('theme-toggle').addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('wiki-theme', next);
+          updateButton();
+        });
+      });
+
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        if (!localStorage.getItem('wiki-theme')) {
+          document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+          updateButton();
+        }
+      });
+    })();
+  </script>
 
   <script>
     window.$docsify = {
@@ -305,10 +372,8 @@
       auto2top: true,
       copyCode: true,
 
-      // 侧边栏默认展开层级：1 = 只展开第一层大章
       sidebarDisplayLevel: 1,
 
-      // 搜索
       search: {
         maxAge: 86400000,
         paths: 'auto',
@@ -317,14 +382,10 @@
         depth: 3
       },
 
-      // 折叠插件配置
-      sidebarCollapse: {
-        // 可留空，插件会自动识别 <p> 作为可折叠标题
-      },
+      sidebarCollapse: {},
 
-      // 别名，保证子目录也能读到根目录的 _sidebar.md
       alias: {
-        '/.*/_sidebar.md': '/_sidebar.md'
+        '/.*/sidebar.md': '/sidebar.md'
       },
 
       formatUpdated: '{YYYY}/{MM}/{DD} {HH}:{mm}',
@@ -332,22 +393,10 @@
     }
   </script>
 
-  <!-- ===== Docsify 核心 ===== -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/copy-code.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
-
-  <!-- ===== 侧边栏折叠插件 ===== -->
   <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
-
-  <!--
-    如果上面 CDN 加载失败（国内网络不稳定），可以用下面这些备选：
-    <script src="https://cdn.staticfile.org/docsify/4.13.0/lib/docsify.min.js"></script>
-    <script src="https://cdn.staticfile.org/docsify/4.13.0/lib/plugins/search.min.js"></script>
-    <script src="https://cdn.staticfile.org/docsify/4.13.0/lib/plugins/copy-code.min.js"></script>
-    <script src="https://cdn.staticfile.org/docsify/4.13.0/lib/plugins/zoom-image.min.js"></script>
-    <script src="https://cdn.staticfile.org/docsify-sidebar-collapse/1.0.6/docsify-sidebar-collapse.min.js"></script>
-  -->
 </body>
 </html>
