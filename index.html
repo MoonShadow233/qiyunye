@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>栖云野 Wiki</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Docsify 主题 -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">
+
+  <style>
+    /* ===== MC Wiki 风格配色 ===== */
+    :root {
+      --mc-green: #3c8527;
+      --mc-green-dark: #2a5f1b;
+      --mc-blue: #4a9eff;
+      --mc-border: #c8ccd1;
+      --mc-bg: #f6f7f9;
+      --mc-bg-soft: #eaecf0;
+      --mc-bg-card: #ffffff;
+      --mc-text: #202122;
+      --mc-text-soft: #54595d;
+    }
+
+    body {
+      background: var(--mc-bg);
+      color: var(--mc-text);
+      font-family: "Linux Libertine", Georgia, "Times New Roman", "Microsoft YaHei", sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ===== 侧边栏 ===== */
+    .sidebar {
+      background: var(--mc-bg-soft);
+      border-right: 1px solid var(--mc-border);
+    }
+
+    .sidebar .app-name {
+      font-family: "Minecraft", "Microsoft YaHei", sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--mc-green-dark);
+      letter-spacing: 1px;
+      padding: 16px 0;
+      border-bottom: 2px solid var(--mc-green);
+      margin-bottom: 12px;
+    }
+
+    .sidebar .app-name-link {
+      color: var(--mc-green-dark) !important;
+    }
+
+    /* 搜索框 */
+    .sidebar .search {
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--mc-border);
+      padding-bottom: 8px;
+    }
+
+    .sidebar .search input {
+      background: #fff;
+      border: 1px solid var(--mc-border);
+      border-radius: 2px;
+      padding: 6px 10px;
+      font-size: 13px;
+      color: var(--mc-text);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .sidebar .search input:focus {
+      border-color: var(--mc-green);
+      outline: none;
+    }
+
+    /* 侧边栏普通链接 */
+    .sidebar-nav a {
+      color: var(--mc-text-soft);
+      font-size: 14px;
+      padding: 4px 0;
+      border-radius: 0;
+      text-decoration: none;
+    }
+
+    .sidebar-nav a:hover {
+      color: var(--mc-green-dark);
+      background: rgba(60, 133, 39, 0.08);
+      text-decoration: none;
+    }
+
+    /* ===== 大章折叠样式 ===== */
+    .sidebar-nav > ul > li > p {
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--mc-text);
+      margin-top: 14px;
+      margin-bottom: 4px;
+      padding: 6px 8px;
+      font-size: 14px;
+      border-bottom: 1px solid var(--mc-border);
+      position: relative;
+      user-select: none;
+    }
+
+    .sidebar-nav > ul > li > p::before {
+      content: "▸";
+      display: inline-block;
+      margin-right: 6px;
+      transition: transform 0.2s;
+      color: var(--mc-green);
+    }
+
+    .sidebar-nav > ul > li.open > p::before {
+      transform: rotate(90deg);
+    }
+
+    /* 子项缩进 */
+    .sidebar-nav > ul > li > ul {
+      padding-left: 12px;
+    }
+
+    .sidebar-nav > ul > li > ul > li > a {
+      padding-left: 14px;
+      border-left: 2px solid transparent;
+      display: block;
+    }
+
+    .sidebar-nav > ul > li > ul > li.active > a {
+      border-left: 2px solid var(--mc-green);
+      color: var(--mc-green-dark);
+      font-weight: bold;
+    }
+
+    /* ===== 正文区域：白色卡片 ===== */
+    .content {
+      padding-top: 20px;
+    }
+
+    .markdown-section {
+      max-width: 900px;
+      padding: 24px 32px;
+      margin: 20px auto;
+      background: var(--mc-bg-card);
+      border: 1px solid var(--mc-border);
+      border-radius: 2px;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--mc-text);
+    }
+
+    /* 标题 */
+    .markdown-section h1 {
+      font-family: "Linux Libertine", Georgia, "Microsoft YaHei", serif;
+      font-size: 28px;
+      font-weight: normal;
+      border-bottom: 1px solid var(--mc-border);
+      padding-bottom: 6px;
+      margin-bottom: 16px;
+      color: var(--mc-text);
+    }
+
+    .markdown-section h2 {
+      font-size: 22px;
+      font-weight: normal;
+      border-bottom: 1px solid var(--mc-border);
+      padding-bottom: 4px;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      color: var(--mc-text);
+    }
+
+    .markdown-section h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 22px;
+      margin-bottom: 8px;
+      color: var(--mc-text);
+    }
+
+    .markdown-section h4 {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 18px;
+      margin-bottom: 6px;
+      color: var(--mc-text);
+    }
+
+    /* 链接 */
+    .markdown-section a {
+      color: var(--mc-blue);
+      text-decoration: none;
+    }
+
+    .markdown-section a:hover {
+      text-decoration: underline;
+    }
+
+    /* 代码 */
+    .markdown-section code {
+      background: #f4f4f4;
+      border: 1px solid #e0e0e0;
+      border-radius: 2px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 13px;
+      padding: 1px 5px;
+      color: #333;
+    }
+
+    .markdown-section pre {
+      background: #f8f9fa;
+      border: 1px solid var(--mc-border);
+      border-radius: 2px;
+      padding: 12px 16px;
+      overflow-x: auto;
+    }
+
+    .markdown-section pre > code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 13px;
+      color: #333;
+    }
+
+    /* 表格 */
+    .markdown-section table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+
+    .markdown-section table th {
+      background: #eaecf0;
+      border: 1px solid var(--mc-border);
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    .markdown-section table td {
+      border: 1px solid var(--mc-border);
+      padding: 8px 12px;
+    }
+
+    .markdown-section table tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    /* 引用块 */
+    .markdown-section blockquote {
+      border-left: 4px solid var(--mc-green);
+      background: rgba(60, 133, 39, 0.06);
+      padding: 10px 16px;
+      margin: 12px 0;
+      color: var(--mc-text-soft);
+    }
+
+    /* 分隔线 */
+    .markdown-section hr {
+      border: none;
+      border-top: 1px solid var(--mc-border);
+      margin: 24px 0;
+    }
+
+    /* 列表 */
+    .markdown-section ul, .markdown-section ol {
+      padding-left: 24px;
+    }
+
+    .markdown-section li {
+      margin: 4px 0;
+    }
+
+    /* 返回顶部 */
+    body .scrolltop {
+      background: var(--mc-green);
+      color: #fff;
+    }
+
+    /* 移动端 */
+    @media screen and (max-width: 768px) {
+      .markdown-section {
+        padding: 16px;
+        margin: 10px;
+      }
+      .markdown-section h1 { font-size: 24px; }
+      .markdown-section h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script>
+    window.$docsify = {
+      name: '栖云野 Wiki',
+      repo: '',
+      loadSidebar: true,
+      subMaxLevel: 2,
+      autoHeader: true,
+      homepage: 'README.md',
+      notFoundPage: true,
+      auto2top: true,
+      copyCode: true,
+
+      // 侧边栏默认展开层级：1 = 只展开第一层大章
+      sidebarDisplayLevel: 1,
+
+      // 搜索
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: '搜索 Wiki...',
+        noData: '找不到结果',
+        depth: 3
+      },
+
+      // 折叠插件配置
+      sidebarCollapse: {
+        // 可留空，插件会自动识别 <p> 作为可折叠标题
+      },
+
+      // 别名，保证子目录也能读到根目录的 _sidebar.md
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
+      },
+
+      formatUpdated: '{YYYY}/{MM}/{DD} {HH}:{mm}',
+      plugins: []
+    }
+  </script>
+
+  <!-- ===== Docsify 核心 ===== -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/copy-code.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+
+  <!-- ===== 侧边栏折叠插件 ===== -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+
+  <!--
+    如果上面 CDN 加载失败（国内网络不稳定），可以用下面这些备选：
+    <script src="https://cdn.staticfile.org/docsify/4.13.0/lib/docsify.min.js"></script>
+    <script src="https://cdn.staticfile.org/docsify/4.13.0/lib/plugins/search.min.js"></script>
+    <script src="https://cdn.staticfile.org/docsify/4.13.0/lib/plugins/copy-code.min.js"></script>
+    <script src="https://cdn.staticfile.org/docsify/4.13.0/lib/plugins/zoom-image.min.js"></script>
+    <script src="https://cdn.staticfile.org/docsify-sidebar-collapse/1.0.6/docsify-sidebar-collapse.min.js"></script>
+  -->
+</body>
+</html>
