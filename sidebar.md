@@ -13,8 +13,6 @@
   - [副本攻略](player/副本攻略.md)
   - [自定义物品](player/自定义物品.md)
   - [常见问题](player/常见问题.md)
-  - [世界观](player/世界观.md)
-  - [管理团队](player/管理团队.md)
 
 - **技术管理篇**
   - [服务器架构](admin/服务器架构.md)
@@ -25,7 +23,7 @@
   - [启动参数](admin/启动参数.md)
   - [故障排查](admin/故障排查.md)
   - [更新日志](admin/更新日志.md)
-  - **插件配置详解**
+  - 插件配置详解
     - [MythicMobs](admin/插件配置详解/MythicMobs.md)
     - [ExecutableItems](admin/插件配置详解/ExecutableItems.md)
     - [Skript](admin/插件配置详解/Skript.md)
