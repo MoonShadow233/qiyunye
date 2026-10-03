@@ -4,7 +4,9 @@
   - [新手入门](player/新手入门.md)
   - [服务器守则](player/服务器守则.md)
   - [指令大全](player/指令大全.md)
+  - [菜单与快捷操作](player/菜单与快捷操作.md)
   - [服务器特性](player/服务器特性.md)
+  - [聊天与社交](player/聊天与社交.md)
   - [领地与圈地](player/领地与圈地.md)
   - [商店与交易](player/商店与交易.md)
   - [经济系统](player/经济系统.md)
@@ -27,7 +29,7 @@
     - [MythicMobs](admin/插件配置详解/MythicMobs.md)
     - [ExecutableItems](admin/插件配置详解/ExecutableItems.md)
     - [Skript](admin/插件配置详解/Skript.md)
-    - [DeluxeMenus](admin/插件配置详解/DeluxeMenus.md)
+    - [FlectonePulse](admin/插件配置详解/FlectonePulse.md)
 
 - **参考**
   - [原版指令](reference/原版指令.md)

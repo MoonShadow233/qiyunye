@@ -22,7 +22,9 @@
 - [新手入门](player/新手入门.md) —— 第一次进服必看
 - [服务器守则](player/服务器守则.md) —— 服务器规则与处罚
 - [指令大全](player/指令大全.md) —— 所有可用指令
+- [菜单与快捷操作](player/菜单与快捷操作.md) —— 主菜单、传送入口、兑换与礼包
 - [服务器特性](player/服务器特性.md) —— 服务器独有玩法
+- [聊天与社交](player/聊天与社交.md) —— 跨服聊天、社交命令与聊天标签
 - [领地与圈地](player/领地与圈地.md) —— 保护你的家园
 - [商店与交易](player/商店与交易.md) —— 买卖物品
 - [经济系统](player/经济系统.md) —— 金币与点券
@@ -31,8 +33,6 @@
 - [副本攻略](player/副本攻略.md) —— 灰烬圣所与松曦镇
 - [自定义物品](player/自定义物品.md) —— 服务器专属武器
 - [常见问题](player/常见问题.md) —— 遇到问题先看这里
-- [世界观](player/世界观.md) —— 栖云野的世界
-- [管理团队](player/管理团队.md) —— 服务器管理名单
 
 ---
 
@@ -52,7 +52,9 @@
 - [MythicMobs](admin/插件配置详解/MythicMobs.md) —— 自定义怪物
 - [ExecutableItems](admin/插件配置详解/ExecutableItems.md) —— 自定义物品
 - [Skript](admin/插件配置详解/Skript.md) —— 脚本
-- [DeluxeMenus](admin/插件配置详解/DeluxeMenus.md) —— 菜单
+- [FlectonePulse](admin/插件配置详解/FlectonePulse.md) —— 聊天、社交命令与集成开关
+- [插件目录与配置覆盖范围](admin/插件清单.md) —— 已部署组件及确认边界
+- [代理与安全配置](admin/服务器架构.md) —— Velocity、后端端口、认证与风险
 
 ---
 
