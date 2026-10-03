@@ -1,4 +1,4 @@
-```
+
 # ExecutableItems 配置详解
 
 > 本文档面向管理员，介绍栖云野服务器中 ExecutableItems 的配置结构与自定义物品。
@@ -259,4 +259,3 @@ ExecutableItems 的指令基于 SCore，常用指令如下：
 
 - [ExecutableItems 官方 Wiki](https://spluginstore.com/wiki/executableitems/)
 - [SCore 自定义指令](https://spluginstore.com/wiki/score/)
-```

@@ -1,4 +1,4 @@
-```
+
 # MythicMobs 配置详解
 
 > 本文档面向管理员，介绍栖云野服务器中 MythicMobs 的配置结构与自定义内容。
@@ -229,4 +229,3 @@ MM 的 `teleport` 不支持 `~` 相对坐标，需要用绝对坐标或 `velocit
 
 - [MythicMobs 官方 Wiki](https://mythicmobs.net/)
 - [MythicMobs 中文 Wiki](https://gitlab.com/ruany/mythicmobs-wiki)
-```
